@@ -1,14 +1,11 @@
-{-# LANGUAGE Safe #-}
-{-# LANGUAGE GADTs #-}
+{-# LANGUAGE Unsafe #-}
 module Dimensions.Coercions (
     coerceDimension
 ) where
 
--- | Small, safe wrapper around 'Data.Coerce.coerce' to centralise coercions
--- within the Dimensions library.
+-- | Highly unsafe coercion between 'Dimension n a' and 'a', use when you don't want to map over things.
 import Data.Type.Coercion (Coercion(Coercion))
-import Data.Coerce (Coercible, coerce)
 import Dimensions.Data (Dimension(MkDimension))
 coerceDimension :: Coercion (Dimension n a) a
-coerceDimension = coerce
+coerceDimension = Coercion 
 {-# INLINE coerceDimension #-}

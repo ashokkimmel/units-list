@@ -60,7 +60,8 @@ library
         
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.21
+    build-depends:    base ^>=4.21,
+        semigroupoids >=6
 
 
     -- Directories containing source files.
