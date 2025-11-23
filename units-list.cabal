@@ -1,6 +1,6 @@
 cabal-version:      3.0
 name:               units-list
-version:            0.1
+version:            0.2.0.0
 
 -- A short (one-line) description of the package.
 synopsis: Extensible typed Dimensions
@@ -60,8 +60,10 @@ library
         
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.21,
-        semigroupoids >=6
+    build-depends:    
+        base >=4.20 && <5,
+        semigroupoids >=6 && <7
+
 
 
     -- Directories containing source files.

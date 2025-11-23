@@ -74,4 +74,4 @@ instance RealFrac a => RealFrac (Dimension '[] a) where
     truncate (MkDimension a) = truncate a
     round (MkDimension a) = round a
     ceiling (MkDimension a) = ceiling a
-    floor (MkDimension a) = floor a/
+    floor (MkDimension a) = floor a
