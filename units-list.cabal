@@ -42,6 +42,7 @@ library
        , Dimensions.GetTermLevel
        , Dimensions.Order
        , Dimensions.Units
+       , Dimensions.Coercions
        , Dimensions.ParseMisc
        , Dimensions.Parser
        , Dimensions.Printer

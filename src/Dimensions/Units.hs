@@ -106,6 +106,12 @@ type family (!^^) a b where
 type (!^) :: [(a,Int')] -> Nat -> [(a,Int')]
 type a !^ b = a !^^ ('TI.Pos b)
 type RT :: [(a,Int')] ->  Int' -> [(a,Int')]
+type Sqrt :: [(a,Int')] -> [(a,Int')]
+type Sqrt b = RTN b (TI.ToPosInt 2)
+type Cqrt :: [(a,Int')] -> [(a,Int')]
+type Cqrt b = RTN b (TI.ToPosInt 3)
+
+
 type family RT a b where 
   '[] `RT` _ = '[]
   ('(a,e)':xs) `RT` b = '(a, e TI./ b) ': xs `RT` b
@@ -114,6 +120,7 @@ type RTN a b = RT a ('TI.Pos b)
 (!^^) :: Fractional n => Dimension a n -> forall b-> TT.ToInt b => Dimension (a !^^ b) n
 (MkDimension a) !^^ b = MkDimension (a ^^ (TT.intval b))
 infixr 8 !^^
+{-# INLINE (!^^) #-}
 (!^) :: Num n => Dimension a n -> forall b-> TL.KnownNat b => Dimension (a !^ b) n
 (MkDimension a) !^ b = MkDimension (a ^ (TT.natVal b))
 {-# INLINE (!^) #-}
@@ -138,6 +145,19 @@ dim b _ = MkDimension b
 dims :: forall f b. Functor f => f b -> forall a ->  f (Dimension (ValidParse @Symbol a) b) 
 dims b _ = fmap MkDimension b  
 {-# INLINE dims #-}
+
+negateD :: (Num a,Functor f) => f a -> f a 
+negateD = fmap negate
+
+absD :: (Num a,Functor f) => f a -> f a 
+absD = fmap abs
+{-# INLINE absD #-}
+
+signumD :: (Num a) => Dimension n a -> Dimension '[] a
+signumD (MkDimension a) = signum a
+{-# INLINE signumD #-}
+
+
 
 dimension :: forall a -> forall b. b -> Dimension (ValidParse @Symbol a)  b
 dimension _ = MkDimension
@@ -181,9 +201,10 @@ infixl 7 !*
 (!/) :: Fractional n => Dimension a n -> Dimension b n -> Dimension (a !/ b) n
 (MkDimension a) !/ (MkDimension b) = MkDimension (a / b)
 infixl 7 !/
+{-# INLINE (!/) #-}
 recipD :: Fractional n => Dimension a n -> Dimension (Invert a) n
 recipD (MkDimension a) = MkDimension $ recip a
-{-# INLINE (!/) #-}
+{-# INLINE recipD #-}
 divD :: Integral n => Dimension a n -> Dimension b n -> Dimension (a !/ b) n
 divD (MkDimension a) (MkDimension b) = MkDimension (a `div` b)
 {-# INLINE divD #-}
@@ -259,3 +280,4 @@ match identifier (MkDimension a) = let times = TT.intval (HowManyMatches identif
         GT -> MkDimension $ doN (convert @_ @identifier) times a
         LT -> MkDimension $ doN (unconvert @_ @identifier) (negate times) a
 {-# INLINE match #-}
+
