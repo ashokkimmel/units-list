@@ -7,12 +7,12 @@
 {-# LANGUAGE NoGeneralisedNewtypeDeriving #-}
 {-# LANGUAGE Safe #-}
 
-module Numeric.Dimensions.Printer (FromDimension,FromTypeDimension,Print) where 
+module Numeric.Dimension.Printer (FromDimension,FromTypeDimension,Print) where 
 import GHC.TypeLits qualified as TL
 import GHC.TypeLits (Symbol,Nat)
-import Numeric.Dimensions.TypeLevelInt qualified as TI
-import Numeric.Dimensions.TypeLevelInt (Int')
-import Numeric.Dimensions.TypeMisc (FoundZero,type (<>))
+import Numeric.Dimension.TypeLevelInt qualified as TI
+import Numeric.Dimension.TypeLevelInt (Int')
+import Numeric.Dimension.TypeMisc (FoundZero,type (<>))
 import Data.Kind (Type)
 -- The generalized printer type family 
 type FromDimension :: forall a. a -> Symbol

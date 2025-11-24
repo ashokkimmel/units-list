@@ -9,11 +9,11 @@
 {-# LANGUAGE NoGeneralisedNewtypeDeriving #-}
 {-# LANGUAGE Safe #-}
 
-module Numeric.Dimensions.GetTermLevel (natVal,charVal,symbolVal,intval,ToInt) where 
+module Numeric.Dimension.GetTermLevel (natVal,charVal,symbolVal,intval,ToInt) where 
 import GHC.TypeLits qualified as TL (natVal,symbolVal,charVal)  
 import GHC.TypeLits (KnownNat,KnownChar,KnownSymbol)  
 import Data.Proxy (Proxy(Proxy))
-import Numeric.Dimensions.TypeLevelInt (Int'(Pos,Neg))
+import Numeric.Dimension.TypeLevelInt (Int'(Pos,Neg))
 import Data.Kind (Constraint)
 natVal :: forall a-> KnownNat a => Integer  
 natVal a = TL.natVal (Proxy @a)

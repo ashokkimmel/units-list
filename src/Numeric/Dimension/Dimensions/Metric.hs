@@ -5,11 +5,11 @@
 {-# LANGUAGE StandaloneKindSignatures #-}
 {-# LANGUAGE Safe #-}
 {-# LANGUAGE DerivingStrategies #-}
-module Numeric.Dimensions.Metric (Metric(..)) where
+module Numeric.Dimension.Metric (Metric(..)) where
 import Data.Type.Ord (Compare)
 import GHC.TypeLits (Nat,Symbol)
 import Data.Kind (Type)
-import Numeric.Dimensions.Parser (ToDimension)
+import Numeric.Dimension.Parser (ToDimension)
 type Metric :: Type 
 data Metric = Meter | Kilogram | Second | Ampere | Kelvin | Mole | Candela
     deriving stock (Show, Eq)

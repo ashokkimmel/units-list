@@ -6,10 +6,10 @@
 {-# LANGUAGE NoGeneralisedNewtypeDeriving #-}
 {-# LANGUAGE Safe #-}
 
-module Numeric.Dimensions.DimensionalMisc (Isos',Delete,UnZero,Replace',Lookup,LookupD0,Invert) where 
-import Numeric.Dimensions.TypeLevelInt qualified as TI
-import Numeric.Dimensions.TypeLevelInt (Int')
-import Numeric.Dimensions.TypeMisc (Maybe')
+module Numeric.Dimension.DimensionalMisc (Isos',Delete,UnZero,Replace',Lookup,LookupD0,Invert) where 
+import Numeric.Dimension.TypeLevelInt qualified as TI
+import Numeric.Dimension.TypeLevelInt (Int')
+import Numeric.Dimension.TypeMisc (Maybe')
 type Isos' :: [(a,a)] -> [(a,b)] -> [(b,c)]
 type family Isos' a b where
     Isos' '[] a = a 

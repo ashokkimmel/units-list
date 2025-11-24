@@ -6,13 +6,13 @@
 {-# LANGUAGE TypeFamilies,DataKinds,UndecidableInstances,AllowAmbiguousTypes #-}
 {-# LANGUAGE NoGeneralisedNewtypeDeriving #-}
 {-# LANGUAGE Safe #-}
-module Numeric.Dimensions.Parser (Parse,ToDimension,Read,ReadTypeDimension) where
-import Numeric.Dimensions.TypeLevelInt qualified as TI 
-import Numeric.Dimensions.TypeLevelInt (Int')
+module Numeric.Dimension.Parser (Parse,ToDimension,Read,ReadTypeDimension) where
+import Numeric.Dimension.TypeLevelInt qualified as TI 
+import Numeric.Dimension.TypeLevelInt (Int')
 import Data.List.NonEmpty (NonEmpty((:|)))
 import GHC.TypeLits qualified as TL 
 import GHC.TypeLits (Symbol,Nat)
-import Numeric.Dimensions.ParseMisc (IgnoreWhitespace, TakeWhileNotIn, UnUnConsSymbol, UnJust, StrToNat, NonEmptyToList, FToNegInt, FToPosInt, TrimWhitespaceRight)
+import Numeric.Dimension.ParseMisc (IgnoreWhitespace, TakeWhileNotIn, UnUnConsSymbol, UnJust, StrToNat, NonEmptyToList, FToNegInt, FToPosInt, TrimWhitespaceRight)
 import Data.Kind (Type)
 type ToDimension :: forall a. Symbol -> a  -- This creates polymorphism in the parser
 type family ToDimension b 

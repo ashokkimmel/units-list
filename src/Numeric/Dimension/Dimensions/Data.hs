@@ -15,12 +15,12 @@
 {-# LANGUAGE RoleAnnotations #-}
 {-# LANGUAGE DeriveFunctor #-}
 {-# LANGUAGE Safe #-}
-module Numeric.Dimensions.Data (Dimension(..)) where 
+module Numeric.Dimension.Data (Dimension(..)) where 
 import GHC.TypeLits (KnownSymbol)
 import Data.Kind (Type)
-import Numeric.Dimensions.Printer (Print)
-import Numeric.Dimensions.GetTermLevel qualified as TT 
-import Numeric.Dimensions.TypeLevelInt (Int')
+import Numeric.Dimension.Printer (Print)
+import Numeric.Dimension.GetTermLevel qualified as TT 
+import Numeric.Dimension.TypeLevelInt (Int')
 import Data.Functor.Apply (Apply(liftF2,(<.>)))
 import Data.Functor.Bind (Bind((>>-), join))
 type role Dimension nominal representational

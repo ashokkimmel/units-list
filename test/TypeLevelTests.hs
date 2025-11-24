@@ -9,12 +9,12 @@
 module TypeLevelTests where
 
 import Data.Kind (Constraint)
-import Numeric.Dimensions.Parser (Parse)
-import qualified Numeric.Dimensions.TypeLevelInt as TI
-import Numeric.Dimensions.ParseMisc (StrToNat)
-import Numeric.Dimensions.Order (Length, Sort, Merge)
-import Numeric.Dimensions.DimensionalMisc (Delete, UnZero, Replace', Invert, LookupD0)
-import Numeric.Dimensions.Printer (Print)
+import Numeric.Dimension.Parser (Parse)
+import qualified Numeric.Dimension.TypeLevelInt as TI
+import Numeric.Dimension.ParseMisc (StrToNat)
+import Numeric.Dimension.Order (Length, Sort, Merge)
+import Numeric.Dimension.DimensionalMisc (Delete, UnZero, Replace', Invert, LookupD0)
+import Numeric.Dimension.Printer (Print)
 
 -- Compile-time assertions as Constraint-kind type synonyms.
 -- These aliases will cause GHC to solve the underlying equality

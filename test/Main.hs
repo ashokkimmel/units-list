@@ -2,8 +2,8 @@
 {-# LANGUAGE TypeApplications #-}
 module Main where 
 import System.Exit (exitFailure)
-import Numeric.Dimensions.Units
-import Numeric.Dimensions.GetTermLevel as TT
+import Numeric.Dimension.Units
+import Numeric.Dimension.GetTermLevel as TT
 import TypeLevelTests (TypeLevelTests)
 
 test :: (Eq a,Show a) => String -> a -> a -> IO ()
