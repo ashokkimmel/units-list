@@ -37,11 +37,10 @@ library
 
     -- Modules exported by the library.
     exposed-modules: 
-         Dimensions.CommonIsos
+         Dimensions.Units
        , Dimensions.DimensionalMisc
        , Dimensions.GetTermLevel
        , Dimensions.Order
-       , Dimensions.Units
        , Dimensions.Coercions
        , Dimensions.ParseMisc
        , Dimensions.Parser
@@ -49,7 +48,9 @@ library
        , Dimensions.TypeLevelInt
        , Dimensions.TypeMisc
        , Dimensions.Data
-       , Dimensions.Metric
+       , Dimensions.Do
+    --   ,  Dimensions.CommonIsos
+    --   , Dimensions.Metric
        , Dimensions.Match
         
     -- Modules included in this library but not exported.

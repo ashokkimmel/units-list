@@ -1,4 +1,5 @@
 {-# LANGUAGE Unsafe #-}
+{-# OPTIONS_GHC -Wno-unsafe #-}
 module Dimensions.Coercions (
     coerceDimension
 ) where

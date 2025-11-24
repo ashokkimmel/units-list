@@ -21,7 +21,8 @@ import Data.Kind (Type)
 import Dimensions.Printer (Print)
 import Dimensions.GetTermLevel qualified as TT 
 import Dimensions.TypeLevelInt (Int')
-import Data.Functor.Apply (Apply(..))
+import Data.Functor.Apply (Apply(liftF2,(<.>)))
+import Data.Functor.Bind (Bind((>>-), join))
 type role Dimension nominal representational
 type Dimension :: forall k. [(k,Int')] -> Type -> Type 
 newtype Dimension a b = MkDimension b
@@ -70,7 +71,7 @@ instance Integral a => Integral (Dimension '[] a) where
     divMod (MkDimension a) (MkDimension b) = let (x,y) = divMod a b in (MkDimension x, MkDimension y)
     toInteger (MkDimension a) = toInteger a
 instance RealFrac a => RealFrac (Dimension '[] a) where
-    properFraction (MkDimension a) = let (n,fr) = properFraction a in (n, MkDimension fr)
+    properFraction (MkDimension a) = MkDimension <$> properFraction a
     truncate (MkDimension a) = truncate a
     round (MkDimension a) = round a
     ceiling (MkDimension a) = ceiling a

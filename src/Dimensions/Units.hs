@@ -75,7 +75,6 @@ module Dimensions.Units (
     , ToDimension
     , FromTypeDimension
     , FromDimension
-    , (!<*>)
     ) where 
 import Dimensions.Printer (FromDimension,FromTypeDimension)
 import Dimensions.Parser (ReadTypeDimension,ToDimension)
@@ -147,7 +146,7 @@ rtn :: Floating n => Dimension a n -> forall b-> TL.KnownNat b => Dimension (RTN
 rtn (MkDimension a) b = MkDimension (a ** (recip (fromInteger (TT.natVal b))))
 {-# INLINE rtn #-}
 -- | Add the numeric values inside two dimensions with the same
--- dimension tag. This is a thin wrapper around 'liftD2'.
+-- dimension tag. This is a thin wrapper around 'liftF2'.
 (!+) :: Num n => Dimension a n -> Dimension a n -> Dimension a n
 (!+) = liftF2 (+)
 infixl 6 !+
