@@ -3,7 +3,7 @@
 {-# LANGUAGE NoGeneralisedNewtypeDeriving #-}
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE Safe #-}
-module Dimensions.CommonIsos (AbbrToFull) where
+module Numeric.Dimensions.CommonIsos (AbbrToFull) where
 import GHC.TypeLits (Symbol)
 
 type AbbrToFull :: [(Symbol, Symbol)]

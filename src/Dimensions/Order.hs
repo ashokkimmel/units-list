@@ -6,11 +6,11 @@
 {-# LANGUAGE NoGeneralisedNewtypeDeriving #-}
 {-# LANGUAGE Safe #-}
 
-module Dimensions.Order (Sort,Merge) where 
+module Numeric.Dimensions.Order (Sort,Merge) where 
 import GHC.TypeLits qualified as TL
 import GHC.TypeLits (Nat)
-import Dimensions.TypeLevelInt qualified as TI
-import Dimensions.TypeLevelInt (Int')
+import Numeric.Dimensions.TypeLevelInt qualified as TI
+import Numeric.Dimensions.TypeLevelInt (Int')
 import Data.Type.Ord (Compare)
 type Sort :: [(k, Int')] -> [(k, Int')]
 type family Sort a where

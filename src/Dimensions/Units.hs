@@ -16,7 +16,7 @@
 {-# LANGUAGE RequiredTypeArguments #-}
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE Safe #-}
-module Dimensions.Units (
+module Numeric.Dimensions.Units (
     Dimension
     , (!*)
     , (!/)
@@ -79,20 +79,20 @@ module Dimensions.Units (
     , FromTypeDimension
     , FromDimension
     ) where 
-import Dimensions.Printer (FromDimension,FromTypeDimension)
-import Dimensions.Parser (ReadTypeDimension,ToDimension)
+import Numeric.Dimensions.Printer (FromDimension,FromTypeDimension)
+import Numeric.Dimensions.Parser (ReadTypeDimension,ToDimension)
 import qualified GHC.TypeLits as TL
 import GHC.TypeLits (Symbol,Nat)
-import qualified Dimensions.TypeLevelInt as TI
-import Dimensions.TypeLevelInt (Int')
-import Dimensions.Parser (Parse)
-import Dimensions.Order (Sort,Merge)
+import qualified Numeric.Dimensions.TypeLevelInt as TI
+import Numeric.Dimensions.TypeLevelInt (Int')
+import Numeric.Dimensions.Parser (Parse)
+import Numeric.Dimensions.Order (Sort,Merge)
 import Data.Kind (Constraint)
-import Dimensions.DimensionalMisc (Isos',Delete,UnZero,Replace',LookupD0,Invert)
-import Dimensions.Data (Dimension(MkDimension))
+import Numeric.Dimensions.DimensionalMisc (Isos',Delete,UnZero,Replace',LookupD0,Invert)
+import Numeric.Dimensions.Data (Dimension(MkDimension))
 import Data.Functor.Apply (liftF2)
-import qualified Dimensions.GetTermLevel as TT
-import Dimensions.Match (MatchAll,ChangeMatch,HowManyMatches,convert,unconvert)
+import qualified Numeric.Dimensions.GetTermLevel as TT
+import Numeric.Dimensions.Match (MatchAll,ChangeMatch,HowManyMatches,convert,unconvert)
 -- | Replace all occurrences of key @s@ with @t@ in the type-level
 -- association list @x@, then sort and normalise the result. Useful for
 -- renaming symbols in a dimension's tag list.

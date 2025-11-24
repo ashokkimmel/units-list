@@ -9,11 +9,11 @@
 {-# LANGUAGE ImportQualifiedPost #-}
 {-# LANGUAGE NoGeneralisedNewtypeDeriving #-}
 {-# LANGUAGE Safe #-}
-module Dimensions.TypeLevelInt (type (+),type (-), type (*),type (/),ToNegInt,ToPosInt,Negate,Int'(Pos,Neg),ToNatural) where
+module Numeric.Dimensions.TypeLevelInt (type (+),type (-), type (*),type (/),ToNegInt,ToPosInt,Negate,Int'(Pos,Neg),ToNatural) where
 import GHC.TypeLits qualified as TL
 import GHC.TypeLits (Nat)
 import GHC.TypeError ( TypeError, ErrorMessage(Text,ShowType,(:<>:)) )
-import Dimensions.TypeMisc (IfThenElse)
+import Numeric.Dimensions.TypeMisc (IfThenElse)
 import Data.Kind (Type)
 type Int'     :: Type
 data Int' = Pos Nat | Neg Nat -- Neg n represents -(n+1)

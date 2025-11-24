@@ -8,7 +8,7 @@
 {-# LANGUAGE NoGeneralisedNewtypeDeriving #-}
 {-# LANGUAGE Safe #-}
 
-module Dimensions.ParseMisc 
+module Numeric.Dimensions.ParseMisc 
                  (IgnoreWhitespace
                  ,TakeWhileNotIn
                  ,UnUnConsSymbol
@@ -23,10 +23,10 @@ import Data.Kind (Type)
 import Data.List.NonEmpty (NonEmpty((:|)))
 import GHC.TypeLits qualified as TL
 import GHC.TypeLits (Nat, Symbol)
-import Dimensions.TypeLevelInt (Int')
-import Dimensions.TypeLevelInt qualified as TI
+import Numeric.Dimensions.TypeLevelInt (Int')
+import Numeric.Dimensions.TypeLevelInt qualified as TI
 import GHC.TypeError (TypeError,ErrorMessage((:<>:),Text,ShowType))
-import Dimensions.TypeMisc (IfThenElse)
+import Numeric.Dimensions.TypeMisc (IfThenElse)
 type IgnoreWhitespace :: Symbol -> Symbol
 type family IgnoreWhitespace a where
   IgnoreWhitespace a = UIgnoreWhitespace (TL.UnconsSymbol a)

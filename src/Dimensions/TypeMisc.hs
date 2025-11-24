@@ -6,7 +6,7 @@
 {-# LANGUAGE DataKinds,TypeFamilies,UndecidableInstances #-}
 {-# LANGUAGE NoGeneralisedNewtypeDeriving #-}
 {-# LANGUAGE Safe #-}
-module Dimensions.TypeMisc (type (<>),Maybe',FoundZero,IfThenElse,type (==)) where
+module Numeric.Dimensions.TypeMisc (type (<>),Maybe',FoundZero,IfThenElse,type (==)) where
 import GHC.TypeLits qualified as TL
 import GHC.TypeLits (Symbol)
 import GHC.TypeError ( TypeError, ErrorMessage(Text) )

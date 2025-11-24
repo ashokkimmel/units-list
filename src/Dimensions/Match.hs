@@ -9,13 +9,13 @@
 {-# LANGUAGE UndecidableInstances #-}
 {-# LANGUAGE Safe #-}
 
-module Dimensions.Match (MatchAll(..),ChangeMatch,StripPrefix,HowManyMatches) where
+module Numeric.Dimensions.Match (MatchAll(..),ChangeMatch,StripPrefix,HowManyMatches) where
 import qualified GHC.TypeLits as TL
 import GHC.TypeLits (Symbol)
 import Data.Kind (Constraint,Type)
-import Dimensions.TypeMisc (IfThenElse,type (==))
-import qualified Dimensions.TypeLevelInt  as TI
-import Dimensions.TypeLevelInt (Int')
+import Numeric.Dimensions.TypeMisc (IfThenElse,type (==))
+import qualified Numeric.Dimensions.TypeLevelInt  as TI
+import Numeric.Dimensions.TypeLevelInt (Int')
 type StripPrefix :: Symbol -> Symbol -> Maybe Symbol
 type family StripPrefix a b where 
     StripPrefix a b = StripPrefixU (TL.UnconsSymbol a) (TL.UnconsSymbol b)

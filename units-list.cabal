@@ -37,21 +37,21 @@ library
 
     -- Modules exported by the library.
     exposed-modules: 
-         Dimensions.Units
-       , Dimensions.DimensionalMisc
-       , Dimensions.GetTermLevel
-       , Dimensions.Order
-       , Dimensions.Coercions
-       , Dimensions.ParseMisc
-       , Dimensions.Parser
-       , Dimensions.Printer
-       , Dimensions.TypeLevelInt
-       , Dimensions.TypeMisc
-       , Dimensions.Data
-       , Dimensions.Do
-    --   ,  Dimensions.CommonIsos
-    --   , Dimensions.Metric
-       , Dimensions.Match
+         Numeric.Dimensions.Units
+       , Numeric.Dimensions.DimensionalMisc
+       , Numeric.Dimensions.GetTermLevel
+       , Numeric.Dimensions.Order
+       , Numeric.Dimensions.Coercions
+       , Numeric.Dimensions.ParseMisc
+       , Numeric.Dimensions.Parser
+       , Numeric.Dimensions.Printer
+       , Numeric.Dimensions.TypeLevelInt
+       , Numeric.Dimensions.TypeMisc
+       , Numeric.Dimensions.Data
+       , Numeric.Dimensions.Do
+    --   ,  Numeric.Dimensions.CommonIsos
+    --   , Numeric.Dimensions.Metric
+       , Numeric.Dimensions.Match
         
     -- Modules included in this library but not exported.
     -- other-modules:

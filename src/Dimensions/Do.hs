@@ -8,8 +8,8 @@
 Allows for monadic programming with 'Dimension's.
 I have no idea why someone would use this, as it forfiets much of the type safety benefits of 'Dimension's.
 This does allow for stuff like: 
->>> import qualified Dimensions.Do as D 
->>> import Dimensions.Units 
+>>> import qualified Numeric.Dimensions.Do as D 
+>>> import Numeric.Dimensions.Units 
 >>> :{
 >>> D.do 
 >>>    x <- inv $ 3 `dim` "meter"
@@ -18,10 +18,10 @@ This does allow for stuff like:
 >>> :}
 But I think you should just use normal (!*),recipD and (!^) if you want something like that, but if you really want to use monadic style, this is here for you.
 -}
-module Dimensions.Do (fmap,pure,return,(<*>),(>>=),(>>),join,mult,inv) where
+module Numeric.Dimensions.Do (fmap,pure,return,(<*>),(>>=),(>>),join,mult,inv) where
 import Prelude hiding (pure,return,(<*>),(>>=),(>>))
-import Dimensions.Data (Dimension(MkDimension))
-import Dimensions.Units (type (!*), Invert,type (!^))
+import Numeric.Dimensions.Data (Dimension(MkDimension))
+import Numeric.Dimensions.Units (type (!*), Invert,type (!^))
 pure,return :: b -> Dimension '[] b
 pure = MkDimension
 return = MkDimension
