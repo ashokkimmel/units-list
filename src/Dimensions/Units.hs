@@ -34,7 +34,10 @@ module Dimensions.Units (
     , type (!^)
     , type RT
     , type RTN
+    , Sqrt
+    , Cbrt 
     , Replace
+    , Invert 
     , Isos
     , Delete
     , Format
@@ -90,36 +93,71 @@ import Dimensions.Data (Dimension(MkDimension))
 import Data.Functor.Apply (liftF2)
 import qualified Dimensions.GetTermLevel as TT
 import Dimensions.Match (MatchAll,ChangeMatch,HowManyMatches,convert,unconvert)
+-- | Replace all occurrences of key @s@ with @t@ in the type-level
+-- association list @x@, then sort and normalise the result. Useful for
+-- renaming symbols in a dimension's tag list.
 type Replace :: k -> k -> [(k, Int')] -> [(k, Int')]
 type Replace s t x = Sort (Replace' s t x)
+
+-- | Apply a list of isomorphisms (pairs) to a set of tags, producing
+-- the corresponding (sorted) list of typed tags. This is used to map
+-- symbolic aliases to canonical names.
 type Isos :: [(a, a)] -> [(a, k)] -> [(k, Int')]
 type Isos a b = Sort (Isos' a b)
+
+-- | Normalise a type-level list of tag/exponent pairs by removing zero
+-- exponents and sorting the list.
 type Format :: [(k, Int')] -> [(k, Int')]
 type Format a = Sort (UnZero a)
+
+-- | Constraint that enforces a tag list is in its canonical 'Format'.
 type ValidDimension :: [(k, Int')] -> Constraint
 type ValidDimension a = (a ~ Format a)
+
+-- | Parse a symbol at the type level into a list of tag/exponent
+-- pairs, then sort and normalise the result. Used by parsing helpers
+-- to obtain a canonical dimension representation.
 type ValidParse :: forall k. Symbol -> [(k,Int')]
 type ValidParse a = Sort (Parse a)
+
+-- | Multiply two type-level dimension lists by merging their
+-- tag/exponent pairs and dropping zero exponents.
 type (!*) :: [(k,Int')] -> [(k,Int')] -> [(k,Int')]
 type (!*) a b = UnZero (Merge a b)
+
+-- | Divide two type-level dimension lists by merging with the
+-- inverted second list, then dropping zero exponents.
 type (!/) :: [(k,Int')] -> [(k,Int')] -> [(k,Int')]
 type (!/) a b = UnZero (Merge a (Invert b))
+
+-- | Raise every exponent in a type-level tag list to the given
+-- integral power (an 'Int' rep via 'Int''). This is a type-family
+-- because the exponent may be negative.
 type (!^^) :: [(a,Int')] -> Int' -> [(a,Int')]
 type family (!^^) a b where 
-  '[] !^^ _ = '[]
-  ('(a,b)':xs) !^^ e = '(a,b TI.* e) ': xs !^^ e 
+    '[] !^^ _ = '[]
+    ('(a,b)':xs) !^^ e = '(a,b TI.* e) ': xs !^^ e 
+
+-- | Like '!^^' but the exponent is a type-level natural number.
 type (!^) :: [(a,Int')] -> Nat -> [(a,Int')]
-type a !^ b = a !^^ ('TI.Pos b)
-type RT :: [(a,Int')] ->  Int' -> [(a,Int')]
+type (!^) a b = a !^^ ('TI.Pos b)
+
+
+-- | Square-root of a tag list (type-level shorthand for 'RTN ... 2').
 type Sqrt :: [(a,Int')] -> [(a,Int')]
 type Sqrt b = RTN b 2
+
+-- | Cube-root of a tag list (type-level shorthand for 'RTN ... 3').
 type Cbrt :: [(a,Int')] -> [(a,Int')]
 type Cbrt b = RTN b 3
 
-
+-- | Compute a type-level root of the tag list by dividing each
+-- exponent by the given 'Int'' divisor; fractional/divisibility
+-- issues are handled at the type-level via 'SafeDiv'.
+type RT :: [(a,Int')] ->  Int' -> [(a,Int')]
 type family RT a b where 
-  '[] `RT` _ = '[]
-  ('(a,e)':xs) `RT` b = '(a, e TI./ b) ': xs `RT` b
+    '[] `RT` _ = '[]
+    ('(a,e)':xs) `RT` b = '(a, e TI./ b) ': xs `RT` b
 type RTN :: [(a,Int')] -> Nat -> [(a,Int')]
 type RTN a b = RT a ('TI.Pos b) 
 -- | Raise the numeric value inside a 'Dimension' to an integral power.
